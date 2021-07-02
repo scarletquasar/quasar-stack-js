@@ -100,12 +100,6 @@ function qscom(command) {
 		consPrint("QuasarStackJS > " + applicationDef[0] + " - " + applicationDef[1] + " - " + applicationDef[2]);
 		break;
 		
-		case "force-reload": // Reload the application
-		applicationScreen.innerHTML = lastLoadedPage[0];
-		document.body.style.backgroundImage = "url('" + lastLoadedPage[1] + "')";
-		consPrint('QuasarStackJS > Application Restarted', type = "text");
-		break;
-		
 		case "disable-zoom": //Disable the zoom option in application [*]
 		d.body.addEventListener("wheel", e=>{
 			if(e.ctrlKey)
@@ -171,10 +165,8 @@ function getComponent(index) {
 	return components[index];
 }
 
-function applyComponent(index, object, resw) {
-	if ((w.innerWidth >= resw)) {
-		object.appendChild(components[index]);
-	}
+function applyComponent(index, object) {
+	object.appendChild(components[index]);
 }
 
 // Time-based functions
@@ -306,7 +298,7 @@ function $qs(object, action, argument = "0") {
 	}
 }
 
-function $qsAll(object, action, argument = "0", variant = 0) {
+function $qsAll(object, action, argument = "0") {
 		switch (action) {
 		case "destroy":
 		d.querySelectorAll(object).forEach(function (i) {
